@@ -1,30 +1,26 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="parking-lot">
+    <BarrierComp left="1500" top="1000" />
+    <BarrierTurned left="500" top="500" />
+  </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import BarrierComp from './components/BarrierComp.vue';
+import BarrierTurned from './components/BarrierTurned.vue';
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  components: {
+    BarrierComp,
+    BarrierTurned
   }
+}
+</script>
+
+<style lang="less">
+.parking-lot {
+  width: 100vw;
+  height: 100vh;
+  background-color: #70777A;
 }
 </style>
