@@ -1,12 +1,22 @@
 <template>
-    <div class="tile barrier" :style="`left: ${left}px; top: ${top}px`">
-        <img width="200" src="@/assets/barrier.webp" alt="">
+    <div class="tile" :style="`left: ${left}px; top: ${top}px`">
+        <div @click="toggleGate" :class="{ 'open': isOpen }" class="barrier"></div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['left', 'top']
+        props: ['left', 'top'],
+        data() {
+            return {
+              isOpen: false,
+            };
+          },
+          methods: {
+            toggleGate() {
+              this.isOpen = !this.isOpen;
+            },
+          },
     }
 </script>
 
@@ -17,12 +27,18 @@
     position: absolute;
     z-index: 1;
     // background-color: #fff;
-    img {
-        position: absolute;
-    }
 }
-.barrier img {
+.barrier {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('@/assets/barrier-sprite.webp');
+    background-size: 5000px 200px;
     left: -43px;
     top: -98px;
+    transition: background-position 0.5s steps(24);
+    &.open {
+        background-position: -4800px 0;
+    }
 }
 </style>
